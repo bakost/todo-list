@@ -43,9 +43,11 @@ REST API для управления списком задач (To-do list), с 
 
 3. Настроить .env (например)
    ```
-   DJANGO_SECRET_KEY=<ваш_secret_key>
+   SECRET_KEY=<ваш_secret_key>
    DEBUG=True
-   REDIS_URL=redis://localhost:6379/0
+   CELERY_BROKER_URL=redis://localhost:6379/0
+   CELERY_RESULT_BACKEND=redis://localhost:6379/1
+   DATABASE_URL=postgres://<user>:<password>@localhost:5432/<dbname>
    ```
 
 4. Применить миграции  
@@ -139,4 +141,3 @@ REST API для управления списком задач (To-do list), с 
    GET /api/todos/export/status/?task_id=<task_id> \
      -H "Authorization: Bearer <access_token>"
    ```
-   
